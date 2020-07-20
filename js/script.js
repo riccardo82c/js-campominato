@@ -17,13 +17,9 @@ con difficoltà 2 => tra 1 e 50 */
 // 3. Inserire il prompt in un ciclo:
 // se num utente non presente in num casuali pc ok altrimenti fine gioco
 // 4. comunicare il punteggio utente stabilito dalla lunghezza dell'array utente creato
-// 5. differenti modalità di gioco
+// BONUS. differenti modalità di gioco
 
-// 1. genero un array di 16 num casuali [1 - 100]
-
-var arrPc = [];
-
-// 5. creo diverse modalità di gioco differenziando il range dei numeri Random
+// BONUS. creo diverse modalità di gioco differenziando il range dei numeri Random
 // creati dal pc
 do {
   var mode = prompt(
@@ -49,8 +45,11 @@ switch (mode) {
     break;
 }
 
-console.log(numeriMax);
+console.log(`Range numeri da 1 a ${numeriMax}`);
 
+// 1. genero un array di 16 num casuali [1 - 100]
+
+var arrPc = [];
 // utilizzo il while poichè nn so per quanti cicli fare l'inserimento poichè
 // se il numero già presente non viene inserito e nn aumenta lunghezza dell'array
 while (arrPc.length < 16) {
@@ -71,10 +70,13 @@ var punteggio = 0;
 do {
   // 2. prompt per ricevere numero dall'utente
   var numeroUtente = prompt(`inserisci un numero [1 -${numeriMax}]`);
-  console.log(arrayUtente);
-  punteggio++;
 
-  arrayUtente.push(numeroUtente);
+  if (!checkArr(arrayUtente, numeroUtente)) {
+    arrayUtente.push(numeroUtente);
+    console.log(arrayUtente);
+    punteggio++;
+  }
+
   // 2.1 controllo duplicati array utente ->  uscita ciclo e fine gioco
 } while (!checkArr(arrPc, numeroUtente) && arrayUtente.length < numeriMax - 16);
 
