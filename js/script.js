@@ -21,9 +21,14 @@ con difficoltà 2 => tra 1 e 50 */
 
 // BONUS. creo diverse modalità di gioco differenziando il range dei numeri Random
 // creati dal pc
+
+alert(
+  "Scopo del gioco: inserire più numeri possibile senza trovare quelli generati dal PC"
+);
+
 do {
   var mode = prompt(
-    "Inserisci la modalità di gioco: 0 Facile, 1 Medio, 2 Difficle"
+    "Inserisci la modalità di gioco: 0 FACILE, 1 MEDIO, 2 DIFFICILE"
   );
 } while (mode != "0" && mode != "1" && mode != "2");
 
@@ -78,7 +83,10 @@ do {
   }
 
   // 2.1 controllo duplicati array utente ->  uscita ciclo e fine gioco
-} while (!checkArr(arrPc, numeroUtente) && arrayUtente.length < numeriMax - 16);
+} while (
+  !checkArr(arrPc, numeroUtente) &&
+  arrayUtente.length < numeriMax - arrPc.length
+);
 
 console.log(`Hai perso! Punteggio: ${punteggio}`);
 
