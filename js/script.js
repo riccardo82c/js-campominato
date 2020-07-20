@@ -17,15 +17,44 @@ con difficoltà 2 => tra 1 e 50 */
 // 3. Inserire il prompt in un ciclo:
 // se num utente non presente in num casuali pc ok altrimenti fine gioco
 // 4. comunicare il punteggio utente stabilito dalla lunghezza dell'array utente creato
+// 5. differenti modalità di gioco
 
 // 1. genero un array di 16 num casuali [1 - 100]
 
 var arrPc = [];
 
+// 5. creo diverse modalità di gioco differenziando il range dei numeri Random
+// creati dal pc
+do {
+  var mode = prompt(
+    "Inserisci la modalità di gioco: 0 Facile, 1 Medio, 2 Difficle"
+  );
+} while (mode != "0" && mode != "1" && mode != "2");
+
+var numeriMax;
+
+switch (mode) {
+  case "0":
+    numeriMax = 100;
+    break;
+  case "1":
+    numeriMax = 80;
+    break;
+  case "2":
+    numeriMax = 50;
+    break;
+
+  default:
+    alert("Errore!");
+    break;
+}
+
+console.log(numeriMax);
+
 // utilizzo il while poichè nn so per quanti cicli fare l'inserimento poichè
 // se il numero già presente non viene inserito e nn aumenta lunghezza dell'array
 while (arrPc.length < 16) {
-  var numeroPc = numRandom(1, 100);
+  var numeroPc = numRandom(1, numeriMax);
   if (!checkArr(arrPc, numeroPc)) {
     arrPc.push(numeroPc);
   }
@@ -41,13 +70,13 @@ var punteggio = 0;
 // 3. inserisco il prompt in un ciclo - > termina se numeroUtente presente in arrayPc oppure se arrayUtente < 100 - N
 do {
   // 2. prompt per ricevere numero dall'utente
-  var numeroUtente = prompt("inserisci un numero [1 - 100]");
+  var numeroUtente = prompt(`inserisci un numero [1 -${numeriMax}]`);
   console.log(arrayUtente);
   punteggio++;
 
   arrayUtente.push(numeroUtente);
   // 2.1 controllo duplicati array utente ->  uscita ciclo e fine gioco
-} while (!checkArr(arrPc, numeroUtente) && arrayUtente.length < 84);
+} while (!checkArr(arrPc, numeroUtente) && arrayUtente.length < numeriMax - 16);
 
 console.log(`Hai perso! Punteggio: ${punteggio}`);
 
