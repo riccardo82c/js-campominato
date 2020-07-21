@@ -88,7 +88,7 @@ do {
     arrayUtente.push(numeroUtente);
     console.log(arrayUtente);
   }
-
+  // 5. incremento il punteggio ogni volta che viene checkato un numero non presente tra i num PC
   if (!checkArr(arrPc, numeroUtente)) {
     punteggio++;
   }
@@ -98,10 +98,10 @@ do {
   !checkArr(arrPc, numeroUtente) &&
   arrayUtente.length < numeriMax - arrPc.length
 );
-
+// 6. log risultato finale punteggio diff punteggio massimo
 console.log(
   `Gioco terminato! Punteggio: ${punteggio} Punteggio Massimo ${
-    numeriMax - arrPc.length
+    numeriMax - arrPc.lengths
   }`
 );
 
