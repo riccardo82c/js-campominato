@@ -77,7 +77,7 @@ console.log(`Array pc: ${arrPc}`);
 // 2. ciclo per ricevere numero dall'utente
 
 var arrayUtente = [];
-var vittoria = false;
+var punteggio = 0;
 
 // 3. inserisco il prompt in un ciclo - > termina se numeroUtente presente in arrayPc oppure se arrayUtente < 100 - N
 do {
@@ -87,19 +87,23 @@ do {
   if (!checkArr(arrayUtente, numeroUtente)) {
     arrayUtente.push(numeroUtente);
     console.log(arrayUtente);
+  }
 
-    if (arrayUtente.length == numeriMax - arrPc.length) {
-      vittoria = true;
-    }
+  if (!checkArr(arrPc, numeroUtente)) {
+    punteggio++;
   }
 
   // 2.1 controllo duplicati array utente ->  uscita ciclo e fine gioco
-} while (!checkArr(arrPc, numeroUtente) && vittoria == false);
+} while (
+  !checkArr(arrPc, numeroUtente) &&
+  arrayUtente.length < numeriMax - arrPc.length
+);
 
-console.log(`Array utente: ${arrayUtente.length}`);
-console.log(`Array pc: ${arrPc.length}`);
-console.log(`Vittoria: ${vittoria}, punteggio ${arrayUtente.length}`);
-// console.log(`Hai perso! Punteggio: ${arrayUtente.length}`);
+console.log(
+  `Gioco terminato! Punteggio: ${punteggio} Punteggio Massimo ${
+    numeriMax - arrPc.length
+  }`
+);
 
 /* funzioni */
 
