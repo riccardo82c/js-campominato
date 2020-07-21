@@ -36,7 +36,7 @@ var numeriMax;
 
 switch (mode) {
   case "0":
-    numeriMax = 18;
+    numeriMax = 100;
     break;
   case "1":
     numeriMax = 80;
@@ -101,7 +101,7 @@ do {
 // 6. log risultato finale punteggio diff punteggio massimo
 console.log(
   `Gioco terminato! Punteggio: ${punteggio} Punteggio Massimo ${
-    numeriMax - arrPc.lengths
+    numeriMax - arrPc.length
   }`
 );
 
