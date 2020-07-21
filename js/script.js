@@ -36,7 +36,7 @@ var numeriMax;
 
 switch (mode) {
   case "0":
-    numeriMax = 100;
+    numeriMax = 18;
     break;
   case "1":
     numeriMax = 80;
@@ -64,31 +64,42 @@ while (arrPc.length < 16) {
   }
 }
 
+/* UTILIZZO LA BUILT IN arr.includes(elemento) */
+/* while (arrPc.length < 16) {
+  var numeroPc = numRandom(1, numeriMax);
+  if (!arrPc.includes(numeroPc)) {
+    arrPc.push(numeroPc);
+  }
+} */
+
 console.log(`Array pc: ${arrPc}`);
 
 // 2. ciclo per ricevere numero dall'utente
 
 var arrayUtente = [];
-var punteggio = 0;
+var vittoria = false;
 
 // 3. inserisco il prompt in un ciclo - > termina se numeroUtente presente in arrayPc oppure se arrayUtente < 100 - N
 do {
   // 2. prompt per ricevere numero dall'utente
-  var numeroUtente = prompt(`inserisci un numero [1 -${numeriMax}]`);
+  var numeroUtente = prompt(`inserisci un numero [1 - ${numeriMax}]`);
 
   if (!checkArr(arrayUtente, numeroUtente)) {
     arrayUtente.push(numeroUtente);
     console.log(arrayUtente);
-    punteggio++;
+
+    if (arrayUtente.length == numeriMax - arrPc.length) {
+      vittoria = true;
+    }
   }
 
   // 2.1 controllo duplicati array utente ->  uscita ciclo e fine gioco
-} while (
-  !checkArr(arrPc, numeroUtente) &&
-  arrayUtente.length < numeriMax - arrPc.length
-);
+} while (!checkArr(arrPc, numeroUtente) && vittoria == false);
 
-console.log(`Hai perso! Punteggio: ${punteggio}`);
+console.log(`Array utente: ${arrayUtente.length}`);
+console.log(`Array pc: ${arrPc.length}`);
+console.log(`Vittoria: ${vittoria}, punteggio ${arrayUtente.length}`);
+// console.log(`Hai perso! Punteggio: ${arrayUtente.length}`);
 
 /* funzioni */
 
